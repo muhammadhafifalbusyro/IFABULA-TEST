@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soal Nomor 9</title>
+</head>
+<body>
+   <div id="auth"></div>
+    <script>
+       
+            document.querySelector("#auth").innerHTML =  
+            `
+            <form onsubmit=actionLogin() id="auth">
+                <label for="uname">Username:</label><br>
+                <input type="text" id="uname" name="uname" ><br>
+                <label for="password">Password:</label><br>
+                <input type="text" id="password" name="password" ><br><br>
+                <input type="submit" value="Login"id="submit">
+            </form> 
+            `
+     
+    var btn = document.getElementById('submit');
+    btn.addEventListener('click', func);
+
+    function func() {
+        // alert(document.getElementById("uname").value)
+        localStorage.setItem("uname",document.getElementById("uname").value)
+    }
+    
+
+
+      function actionLogin(auth){
+     
+            document.querySelector("#auth").innerHTML =  
+            `
+            <h1>Selamat Datang</h1>
+            <h1>${localStorage.getItem("uname")}</h1>
+            <button onClick=logout()>Logout</button>
+            `
+      
+      }
+
+      function logout(){
+        localStorage.setItem("uname",null)
+
+        document.querySelector("#auth").innerHTML =  
+            `
+            <form onsubmit=actionLogin() id="auth">
+                <label for="uname">Username:</label><br>
+                <input type="text" id="uname" name="uname" ><br>
+                <label for="password">Password:</label><br>
+                <input type="text" id="password" name="password" ><br><br>
+                <input type="submit" value="Login"id="submit">
+            </form> 
+            `
+      }
+      
+      
+    </script>
+</body>
+</html>
